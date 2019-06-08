@@ -1,3 +1,5 @@
-servicePipeline()
+servicePipeline(
+    upstreamProjects: []
+)
 
 // vim: ft=groovy
