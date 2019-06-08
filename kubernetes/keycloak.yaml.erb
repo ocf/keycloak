@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  selector:
+    app: keycloak
+  ports:
+    - port: 80
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  labels:
+    app: keycloak
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      containers:
+        - name: keycloak
+          image: jboss/keycloak:6.0.1
+          envFrom:
+            - configMapRef:
+                name: config
+            - secretRef:
+                name: secret
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config
+data:
+  KEYCLOAK_USER: admin
+  KEYCLOAK_HOSTNAME: auth.ocf.berkeley.edu
+  DB_VENDOR: postgres
+  DB_ADDR: postgres.ocf.berkeley.edu
+  DB_USER: ocfkeycloak
+  DB_DATABASE: ocfkeycloak
+  PROXY_ADDRESS_FORWARDING: "true"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secret
+type: Opaque
+stringData:
+  KEYCLOAK_PASSWORD: "<%= keycloak_admin_password %>"
+  DB_PASSWORD: "<%= keycloak_postgres_password %>"
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: virtual-host-ingress
+spec:
+  rules:
+    - host: auth.ocf.berkeley.edu
+      http:
+        paths:
+          - backend:
+              serviceName: service
+              servicePort: 80
