@@ -35,6 +35,14 @@ spec:
                 name: secret
           ports:
             - containerPort: 8080
+          volumeMounts:
+            - name: keytabs
+              mountPath: "/etc/keytabs"
+              readOnly: true
+      volumes:
+        - name: keytabs
+          secret:
+            secretName: keytabs
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -57,6 +65,14 @@ type: Opaque
 stringData:
   KEYCLOAK_PASSWORD: "<%= keycloak_admin_password %>"
   DB_PASSWORD: "<%= keycloak_postgres_password %>"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: keytabs
+type: Opaque
+data:
+  http.keytab: "<%= keycloak_keytab %>
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
