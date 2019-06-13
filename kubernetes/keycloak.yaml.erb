@@ -72,7 +72,7 @@ metadata:
   name: keytabs
 type: Opaque
 data:
-  http.keytab: "<%= keycloak_keytab %>"
+  http.keytab: <%= keycloak_keytab %>
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
