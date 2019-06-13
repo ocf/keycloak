@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: keycloak
-          image: jboss/keycloak:6.0.1
+          image: "docker.ocf.berkeley.edu/keycloak:<%= version %>"
           envFrom:
             - configMapRef:
                 name: config
@@ -72,7 +72,7 @@ metadata:
   name: keytabs
 type: Opaque
 data:
-  http.keytab: "<%= keycloak_keytab %>
+  http.keytab: "<%= keycloak_keytab %>"
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
