@@ -23,9 +23,6 @@
             <img class="logo" src="${url.resourcesPath}/img/ocf-logo.svg" alt="OCF">
         </div>
         <div class="box-container">
-            <div>
-                <p class="application-name">OCF Authentication</p>
-            </div>
         <#if realm.password>
             <div>
                <form id="kc-form-login" class="form" onsubmit="login.disabled = true; return true;" action="${url.loginAction}" method="post">
