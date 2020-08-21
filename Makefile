@@ -2,7 +2,7 @@ DOCKER_REVISION ?= keycloak-testing-$(USER)
 DOCKER_TAG = docker-push.ocf.berkeley.edu/keycloak:$(DOCKER_REVISION)
 
 # OCF-UPDATE-CHECK relmon=20430
-KEYCLOAK_VERSION := 10.0.1
+KEYCLOAK_VERSION := 11.0.1
 
 .PHONY: cook-image
 cook-image:
