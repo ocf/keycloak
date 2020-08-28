@@ -17,7 +17,7 @@
 
 	<body>
         <#nested "header">
-        <div class="login-content" style="background-image: url(&quot;${url.resourcesPath}/img/jealousy.png&quot;);">
+        <div class="login-content">
             <div class="box">
         <#if displayMessage && message?has_content>
         <div class="alert alert-${message.type}">
@@ -29,7 +29,7 @@
         </div>
         </#if>
         <#nested "form">
-            </div> 
+            </div>
         </div>
 	</body>
 </html>

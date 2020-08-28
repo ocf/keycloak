@@ -3,40 +3,17 @@
     <#if section = "title">
         ${msg("loginTitle",(realm.displayName!''))}
     <#elseif section = "header">
-        <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet"/>
         <link href="${url.resourcesPath}/img/favicon.ico" rel="icon"/>
-        <script>
-            function togglePassword() {
-                var x = document.getElementById("password");
-                var v = document.getElementById("vi");
-                if (x.type === "password") {
-                    x.type = "text";
-                    v.src = "${url.resourcesPath}/img/eye.png";
-                } else {
-                    x.type = "password";
-                    v.src = "${url.resourcesPath}/img/eye-off.png";
-                }
-            }
-        </script>
     <#elseif section = "form">
-        <div>
-            <img class="logo" src="${url.resourcesPath}/img/ocf-logo.svg" alt="OCF">
-        </div>
-        <div class="box-container">
-            <div>
-                <p class="application-name">OCF Authentication</p>
-            </div>
+        <img id="logo" src="${url.resourcesPath}/img/ocf-logo.svg" alt="OCF logo">
+        <h1>Log in to OCF</h1>
         <#if realm.password>
-            <div>
-               <form id="kc-form-login" class="form" onsubmit="login.disabled = true; return true;" action="${url.loginAction}" method="post">
-                    <input id="username" class="login-field" placeholder="${msg("username")}" type="text" name="username" tabindex="1">
-                    <div>
-                        <label class="visibility" id="v" onclick="togglePassword()"><img id="vi" src="${url.resourcesPath}/img/eye-off.png"></label>
-                    </div>
-                <input id="password" class="login-field" placeholder="${msg("password")}" type="password" name="password" tabindex="2">
-                <input class="submit" type="submit" value="${msg("doLogIn")}" tabindex="3">
-                </form>
-            </div>
+            <form id="kc-form-login" class="form" onsubmit="login.disabled = true; return true;" action="${url.loginAction}" method="post">
+                <label><span>${msg("username")}</span> <input name="username" autofocus="" required="" /></label>
+                <label><span>${msg("password")}</span> <input name="password" type="password" required="" /></label>
+                <button>Log in</button>
+            </form>
+            <p>Or <a href="https://www.ocf.berkeley.edu/account/register/">create an account</a>.</p>
         </#if>
         <#if social.providers??>
             <p class="para">${msg("selectAlternative")}</p>
@@ -46,8 +23,5 @@
                 </#list>
             </div>
         </#if>
-        <div>
-            <p class="copyright">Background Image by <a href="https://www.positrondream.com/wallpapers-all">Madison Porter</a></p>
-        </div>
     </#if>
 </@layout.registrationLayout>
