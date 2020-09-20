@@ -11,16 +11,16 @@
                 var v = document.getElementById("vi");
                 if (x.type === "password") {
                     x.type = "text";
-                    v.src = "${url.resourcesPath}/img/eye.svg";
+                    v.src = "${url.resourcesPath}/img/eye.png";
                 } else {
                     x.type = "password";
-                    v.src = "${url.resourcesPath}/img/eye-off.svg";
+                    v.src = "${url.resourcesPath}/img/eye-off.png";
                 }
             }
         </script>
     <#elseif section = "form">
         <div>
-            <img class="logo" src="${url.resourcesPath}/img/ocf-logo.svg" alt="OCF">
+            <img class="logo" src="${url.resourcesPath}/img/ocf-logo.png" alt="OCF">
         </div>
         <div class="box-container">
             <div>
