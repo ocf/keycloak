@@ -20,7 +20,7 @@
         </script>
     <#elseif section = "form">
         <div>
-            <img class="logo" src="${url.resourcesPath}/img/ocf-logo.svg" alt="OCF">
+            <img class="logo" src="${url.resourcesPath}/img/ocf-logo.png" alt="OCF">
         </div>
         <div class="box-container">
             <div>
@@ -31,7 +31,7 @@
                <form id="kc-form-login" class="form" onsubmit="login.disabled = true; return true;" action="${url.loginAction}" method="post">
                     <input id="username" class="login-field" placeholder="${msg("username")}" type="text" name="username" tabindex="1">
                     <div>
-                        <label class="visibility" id="v" onclick="togglePassword()"><img id="vi" src="${url.resourcesPath}/img/eye-off.png"></label>
+                        <label class="visibility" id="v" onclick="togglePassword()"><img id="vi" src="${url.resourcesPath}/img/eye-off.svg"></label>
                     </div>
                 <input id="password" class="login-field" placeholder="${msg("password")}" type="password" name="password" tabindex="2">
                 <input class="submit" type="submit" value="${msg("doLogIn")}" tabindex="3">

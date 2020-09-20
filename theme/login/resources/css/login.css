@@ -1,46 +1,28 @@
-body, html {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  overflow: hidden;
-  min-height: 0;
-  font-size: 14px;
-  color:rgba(0,0,0,.87);
-  margin:0;
-  height: 100%;
+:root {
+  --desktop-padding: 64px;
+  --mobile-padding: 32px;
+  --desktop-box-width: 320px;
 }
-body {
+
+body,
+html {
+  font-size: 14px;
+  color: rgba(0, 0, 0, .87);
   margin: 0;
 }
-.login-content {
-  background-size:cover;
-  background-position:center;
-  min-height: 100%;
-  min-width: 320px;
-  display:flex;
-  justify-content:center;
-  flex-direction:column;
-}
 .login-content .box {
-  width: 448px;
-  border-radius: 8px;
   background-color: #ffffff;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
   margin: auto;
-}
-.login-content .box .box-container {
-  width:100%;
-  padding-left: 32px;
+  padding: var(--mobile-padding);
 }
 .login-content .box .logo {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 30px;
   width: 6rem;
 }
 .login-content .box .application-name {
-  width: 270px;
+  width: calc(100vw - 2 * var(--mobile-padding));
   font-family: Muli;
   font-size: 24px;
   font-weight: 600;
@@ -50,16 +32,13 @@ body {
   letter-spacing: -0.4px;
   text-align: left;
   color: #0055B8;
-  margin-left: 32px;
   margin-top: 40px;
 }
 .login-content .box .form {
-  margin-left: 32px;
   margin-top: 55px;
-  margin-bottom: -55px;
 }
 .login-content .box .login-field {
-  width: 320px;
+  width: calc(100vw - 2 * var(--mobile-padding) - 2px);
   height: 24px;
   font-family: Muli;
   font-size: 14px;
@@ -74,15 +53,17 @@ body {
   outline: none;
   background-color: #fff;
 }
-.login-content .box input[type="text"]:focus, .login-content .box input[type="password"]:focus {
+.login-content .box input[type="text"]:focus,
+.login-content .box input[type="password"]:focus {
   border-bottom: 2px solid #0055B8;
+  margin-bottom: -1px;
 }
-.login-content .box input[type="text"]:-webkit-autofill, .login-content .box input[type="password"]:-webkit-autofill
-{
+.login-content .box input[type="text"]:-webkit-autofill,
+.login-content .box input[type="password"]:-webkit-autofill {
   box-shadow: 0 0 0px 1000px white inset;
 }
-.login-content .box .submit{
-  width: 320px;
+.login-content .box .submit {
+  width: calc(100vw - 2 * var(--mobile-padding));
   height: 36px;
   border-radius: 2px;
   background-color: #00754a;
@@ -97,33 +78,25 @@ body {
   color: #ffffff;
   border-style: none;
   margin-top: 60px;
-  margin-bottom: 60px;
+  /*   margin-bottom: 60px; */
 }
 .login-content .box .visibility {
   position: relative;
-  left: 296px;
-  top: 20px;
+  left: calc(100vw - 2 * var(--mobile-padding) - 24px);
+  top: 24px;
   width: 24px;
   height: 24px;
   opacity: 0.54;
   border: none;
 }
 .login-content .box .copyright {
-  text-align: center;
-  font-size: 14px;
-  opacity: .6;
-  color: white;
-  font-family: Muli;
-  position: relative;
-  top: 50px;
-  padding-right: 64px;
+  display: none
 }
 a {
-  color:white;
+  color: white;
 }
 .message-text {
-  width: 322px;
-  height: 60px;
+  width: calc(100vw - 2 * var(--mobile-padding));
   opacity: 0.87;
   font-family: Muli;
   font-size: 14px;
@@ -136,49 +109,66 @@ a {
   color: #b8082a;
   border: 0px;
   position: relative;
-  top: 210px;
-  left: 64px;
-  display: inline-flex;
+  top: 206px;
   align-items: center;
-}
-.identity-providers {
-  width: 270px;
-  font-family: Muli;
-  font-size: 16px;
-  font-weight: 600;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 0.83;
-  letter-spacing: -0.4px;
-  text-align: left;
-  color: #0055B8;
-  margin-left: 32px;
-  margin-top: 20px;
-}
-
-.login-content .box .social-link-style {
-  width: 320px;
-  height: 36px;
-  border-radius: 2px;
-  background-color: var(--white);
-  font-family: Muli;
-  font-size: 14px;
-  font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #00754a;
-  border-style: solid;
-  border-color: #00754a;
-  margin-top: 0px;
-  margin-left: 30px;
-  margin-bottom: 10px;
 }
 
 .login-content .box .para {
   font-family: Muli;
   font-size: 14px;
   margin-left: 30px;
+}
+#vi {
+  height: 24px;
+}
+@media only screen and (min-width: 450px) {
+  body,
+  html {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    min-height: 100%;
+    margin: 0;
+  }
+  .login-content {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    overflow: scroll;
+  }
+  .login-content .box {
+    border-radius: 8px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+    padding: 32px var(--desktop-padding);
+  }
+  .login-content .box,
+  .login-content .box .application-name,
+  .login-content .box .login-field,
+  .login-content .box .submit,
+  .login-content .box .copyright,
+  .message-text {
+    width: var(--desktop-box-width);
+  }
+  .login-content .box .form {
+    margin-top: 55px;
+  }
+  
+  .login-content .box .visibility {
+    left: calc(var(--desktop-box-width) - 24px);
+  }
+  .login-content .box .copyright {
+    text-align: center;
+    font-size: 14px;
+    opacity: .6;
+    color: white;
+    font-family: Muli;
+    position: relative;
+    margin-top: 0;
+    height: 0;
+    display: inline-block;
+    top: 64px;
+  }
 }
