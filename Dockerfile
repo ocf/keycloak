@@ -1,5 +1,5 @@
 ARG keycloak_version=latest
-FROM jboss/keycloak:${keycloak_version}
+FROM quay.io/keycloak/keycloak:${keycloak_version}
 
 COPY theme /opt/jboss/keycloak/themes/ocf-theme
 
